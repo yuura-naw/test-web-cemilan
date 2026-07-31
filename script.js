@@ -11,15 +11,11 @@ function tambah(nama, harga){
     }else{
 
         pesanan[nama] = {
-
             harga:harga,
-
             jumlah:1
-
         };
 
     }
-
 
     update();
 
@@ -31,12 +27,9 @@ function tambah(nama, harga){
 
 function kurang(nama, harga){
 
-
     if(pesanan[nama]){
 
-
         pesanan[nama].jumlah--;
-
 
 
         if(pesanan[nama].jumlah <= 0){
@@ -45,28 +38,22 @@ function kurang(nama, harga){
 
         }
 
-
     }
 
 
     update();
-
 
 }
 
 
 
 
-
 function update(){
-
 
     let total = 0;
 
 
-
     for(let nama in pesanan){
-
 
         let item = pesanan[nama];
 
@@ -74,17 +61,13 @@ function update(){
         total += item.harga * item.jumlah;
 
 
-
         let jumlah = document.getElementById(nama);
-
 
 
         if(jumlah){
 
-
             jumlah.innerHTML =
             item.jumlah + " pcs";
-
 
         }
 
@@ -92,11 +75,8 @@ function update(){
     }
 
 
-
     document.getElementById("total").innerHTML =
     total.toLocaleString();
-
-
 
 }
 
@@ -117,13 +97,14 @@ function checkout(){
 
 
 
-    let nama = document.getElementById("namaPembeli").value;
+    let namaPembeli =
+    document.getElementById("namaPembeli").value;
 
 
 
-    if(nama === ""){
+    if(namaPembeli === ""){
 
-        alert("Masukkan nama terlebih dahulu!");
+        alert("Isi nama terlebih dahulu!");
 
         return;
 
@@ -137,18 +118,18 @@ function checkout(){
 
 
     pesan +=
-    "Nama: " + nama + "%0A%0A";
+    "Nama: " + namaPembeli + "%0A%0A";
 
 
 
-    let total=0;
+    let total = 0;
 
 
 
-    for(let produk in pesanan){
+    for(let nama in pesanan){
 
 
-        let item = pesanan[produk];
+        let item = pesanan[nama];
 
 
         let subtotal =
@@ -161,10 +142,11 @@ function checkout(){
 
 
         pesan +=
-        "- " + produk +
-        " (" + item.jumlah +
+        "- " + nama +
+        " (" +
+        item.jumlah +
         " pcs) = Rp" +
-        subtotal.toLocaleString()+
+        subtotal.toLocaleString() +
         "%0A";
 
 
@@ -174,9 +156,7 @@ function checkout(){
 
 
     pesan +=
-
     "%0ATotal: Rp" +
-
     total.toLocaleString();
 
 
@@ -184,7 +164,7 @@ function checkout(){
 
     window.open(
 
-    "https://wa.me/6285888417300?text="+pesan,
+    "https://wa.me/6285888417300?text=" + pesan,
 
     "_blank"
 
