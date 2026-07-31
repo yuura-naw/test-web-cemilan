@@ -107,14 +107,25 @@ function update(){
 function checkout(){
 
 
-
     if(Object.keys(pesanan).length === 0){
-
 
         alert("Keranjang masih kosong!");
 
         return;
 
+    }
+
+
+
+    let nama = document.getElementById("namaPembeli").value;
+
+
+
+    if(nama === ""){
+
+        alert("Masukkan nama terlebih dahulu!");
+
+        return;
 
     }
 
@@ -125,16 +136,19 @@ function checkout(){
     "Halo, saya mau pesan:%0A%0A";
 
 
-
-    let total = 0;
-
-
-
-    for(let nama in pesanan){
+    pesan +=
+    "Nama: " + nama + "%0A%0A";
 
 
 
-        let item = pesanan[nama];
+    let total=0;
+
+
+
+    for(let produk in pesanan){
+
+
+        let item = pesanan[produk];
 
 
         let subtotal =
@@ -147,10 +161,10 @@ function checkout(){
 
 
         pesan +=
-        "- " + nama +
+        "- " + produk +
         " (" + item.jumlah +
         " pcs) = Rp" +
-        subtotal.toLocaleString() +
+        subtotal.toLocaleString()+
         "%0A";
 
 
@@ -160,7 +174,9 @@ function checkout(){
 
 
     pesan +=
+
     "%0ATotal: Rp" +
+
     total.toLocaleString();
 
 
@@ -168,9 +184,9 @@ function checkout(){
 
     window.open(
 
-        "https://wa.me/6285888417300?text=" + pesan,
+    "https://wa.me/6285888417300?text="+pesan,
 
-        "_blank"
+    "_blank"
 
     );
 
