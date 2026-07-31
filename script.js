@@ -1,138 +1,95 @@
-let keranjang = JSON.parse(localStorage.getItem("keranjang")) || [];
+let pesanan = {};
+
 
 
 function tambah(nama, harga){
 
-    let produk = keranjang.find(item => item.nama === nama);
+    if(pesanan[nama]){
 
-
-    if(produk){
-
-        produk.jumlah++;
+        pesanan[nama].jumlah++;
 
     }else{
 
-        keranjang.push({
-            nama:nama,
+        pesanan[nama] = {
+
             harga:harga,
+
             jumlah:1
-        });
+
+        };
 
     }
 
 
-    simpan();
-
-    alert(nama + " masuk keranjang!");
+    update();
 
 }
 
 
 
-function kurang(index){
 
-    if(keranjang[index].jumlah > 1){
 
-        keranjang[index].jumlah--;
+function kurang(nama, harga){
 
-    }else{
 
-        keranjang.splice(index,1);
+    if(pesanan[nama]){
+
+
+        pesanan[nama].jumlah--;
+
+
+
+        if(pesanan[nama].jumlah <= 0){
+
+            delete pesanan[nama];
+
+        }
+
 
     }
 
 
-    simpan();
+    update();
+
 
 }
 
 
 
 
-function hapus(index){
 
-    keranjang.splice(index,1);
+function update(){
 
-    simpan();
 
-}
+    let total = 0;
 
 
 
-function simpan(){
-
-    localStorage.setItem(
-        "keranjang",
-        JSON.stringify(keranjang)
-    );
+    for(let nama in pesanan){
 
 
-    tampilkan();
+        let item = pesanan[nama];
 
-}
+
+        total += item.harga * item.jumlah;
 
 
 
-
-function tampilkan(){
-
-    let list=document.getElementById("list");
-
-
-    if(!list) return;
-
-
-    list.innerHTML="";
-
-
-    let total=0;
-
-
-    keranjang.forEach((item,index)=>{
-
-
-        let subtotal=item.harga * item.jumlah;
-
-
-        total += subtotal;
+        let jumlah = document.getElementById(nama);
 
 
 
-        let li=document.createElement("li");
+        if(jumlah){
 
 
-        li.innerHTML=`
-
-        <b>${item.nama}</b><br>
-
-        Jumlah:
-        <button onclick="kurang(${index})">-</button>
-
-        ${item.jumlah} pcs
-
-        <button onclick="tambah('${item.nama}',${item.harga})">
-        +
-        </button>
-
-        <br>
-
-        Harga:
-        Rp${subtotal.toLocaleString()}
+            jumlah.innerHTML =
+            item.jumlah + " pcs";
 
 
-        <button onclick="hapus(${index})">
-        Hapus
-        </button>
-
-        <hr>
-
-        `;
+        }
 
 
-        list.appendChild(li);
-
-
-    });
+    }
 
 
 
@@ -150,55 +107,72 @@ function tampilkan(){
 function checkout(){
 
 
-    let pesan=
+
+    if(Object.keys(pesanan).length === 0){
+
+
+        alert("Keranjang masih kosong!");
+
+        return;
+
+
+    }
+
+
+
+
+    let pesan =
     "Halo, saya mau pesan:%0A%0A";
 
 
-    let total=0;
+
+    let total = 0;
 
 
 
-    keranjang.forEach(item=>{
+    for(let nama in pesanan){
+
+
+
+        let item = pesanan[nama];
 
 
         let subtotal =
         item.harga * item.jumlah;
 
 
+
         total += subtotal;
 
 
+
         pesan +=
-        item.nama+
-        " ("+
-        item.jumlah+
-        " pcs)"+
-        " = Rp"+
-        subtotal.toLocaleString()+
+        "- " + nama +
+        " (" + item.jumlah +
+        " pcs) = Rp" +
+        subtotal.toLocaleString() +
         "%0A";
 
 
-    });
+    }
+
 
 
 
     pesan +=
-    "%0ATotal: Rp"+
+    "%0ATotal: Rp" +
     total.toLocaleString();
+
 
 
 
     window.open(
 
-    "https://wa.me/6285135632632?text="+pesan,
+        "https://wa.me/6285888417300?text=" + pesan,
 
-    "_blank"
+        "_blank"
 
     );
 
 
 }
-
-
-
-tampilkan();
