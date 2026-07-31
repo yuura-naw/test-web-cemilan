@@ -266,5 +266,17 @@ header p{
 
   }
 
+#namaPembeli{
 
+    width:90%;
+
+    padding:15px;
+
+    border-radius:20px;
+
+    border:2px solid #ddd;
+
+    font-size:18px;
+
+    }
 
