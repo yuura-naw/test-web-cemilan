@@ -1,81 +1,48 @@
-let keranjang =
-JSON.parse(localStorage.getItem("keranjang")) || [];
+let keranjang = JSON.parse(localStorage.getItem("keranjang")) || [];
 
 
+function tambah(nama, harga){
 
-function tambah(nama,harga){
-
-
-keranjang.push({
-
-nama:nama,
-
-harga:harga
-
-});
+    let produk = keranjang.find(item => item.nama === nama);
 
 
-localStorage.setItem(
-"keranjang",
-JSON.stringify(keranjang)
-);
+    if(produk){
+
+        produk.jumlah++;
+
+    }else{
+
+        keranjang.push({
+            nama:nama,
+            harga:harga,
+            jumlah:1
+        });
+
+    }
 
 
-alert("Produk masuk keranjang!");
+    simpan();
+
+    alert(nama + " masuk keranjang!");
 
 }
 
 
 
+function kurang(index){
 
-function tampilkan(){
+    if(keranjang[index].jumlah > 1){
 
+        keranjang[index].jumlah--;
 
-let list=document.getElementById("list");
+    }else{
 
-let total=0;
+        keranjang.splice(index,1);
 
-
-if(!list) return;
-
-
-
-list.innerHTML="";
+    }
 
 
-
-keranjang.forEach((item,index)=>{
-
-
-total += item.harga;
-
-
-let li=document.createElement("li");
-
-
-li.innerHTML=
-
-item.nama+
-" - Rp"+
-item.harga.toLocaleString()+
-
-` <button onclick="hapus(${index})">
-Hapus
-</button>`;
-
-
-list.appendChild(li);
-
-
-
-});
-
-
-
-document.getElementById("total").innerHTML=
-total.toLocaleString();
-
-
+    simpan();
 
 }
 
@@ -84,17 +51,94 @@ total.toLocaleString();
 
 function hapus(index){
 
+    keranjang.splice(index,1);
 
-keranjang.splice(index,1);
+    simpan();
 
-
-localStorage.setItem(
-"keranjang",
-JSON.stringify(keranjang)
-);
+}
 
 
-tampilkan();
+
+function simpan(){
+
+    localStorage.setItem(
+        "keranjang",
+        JSON.stringify(keranjang)
+    );
+
+
+    tampilkan();
+
+}
+
+
+
+
+function tampilkan(){
+
+    let list=document.getElementById("list");
+
+
+    if(!list) return;
+
+
+    list.innerHTML="";
+
+
+    let total=0;
+
+
+    keranjang.forEach((item,index)=>{
+
+
+        let subtotal=item.harga * item.jumlah;
+
+
+        total += subtotal;
+
+
+
+        let li=document.createElement("li");
+
+
+        li.innerHTML=`
+
+        <b>${item.nama}</b><br>
+
+        Jumlah:
+        <button onclick="kurang(${index})">-</button>
+
+        ${item.jumlah} pcs
+
+        <button onclick="tambah('${item.nama}',${item.harga})">
+        +
+        </button>
+
+        <br>
+
+        Harga:
+        Rp${subtotal.toLocaleString()}
+
+
+        <button onclick="hapus(${index})">
+        Hapus
+        </button>
+
+        <hr>
+
+        `;
+
+
+        list.appendChild(li);
+
+
+    });
+
+
+
+    document.getElementById("total").innerHTML =
+    total.toLocaleString();
+
 
 
 }
@@ -102,43 +146,55 @@ tampilkan();
 
 
 
+
 function checkout(){
 
 
-let pesan=
-"Halo saya mau pesan:%0A";
+    let pesan=
+    "Halo, saya mau pesan:%0A%0A";
 
 
-let total=0;
-
-
-
-keranjang.forEach(item=>{
-
-
-pesan +=
-"- "+item.nama+"%0A";
-
-
-total+=item.harga;
-
-
-});
+    let total=0;
 
 
 
-pesan +=
-"%0ATotal : Rp"+
-total.toLocaleString();
+    keranjang.forEach(item=>{
+
+
+        let subtotal =
+        item.harga * item.jumlah;
+
+
+        total += subtotal;
+
+
+        pesan +=
+        item.nama+
+        " ("+
+        item.jumlah+
+        " pcs)"+
+        " = Rp"+
+        subtotal.toLocaleString()+
+        "%0A";
+
+
+    });
 
 
 
-window.open(
+    pesan +=
+    "%0ATotal: Rp"+
+    total.toLocaleString();
 
-"https://wa.me/6285135632632?text="+pesan
 
-);
 
+    window.open(
+
+    "https://wa.me/6285135632632?text="+pesan,
+
+    "_blank"
+
+    );
 
 
 }
