@@ -41,6 +41,26 @@ function kurang(nama, harga){
     }
 
 
+    let jumlah = document.getElementById(nama);
+
+
+    if(jumlah){
+
+        if(pesanan[nama]){
+
+            jumlah.innerHTML =
+            pesanan[nama].jumlah + " pcs";
+
+        }else{
+
+            jumlah.innerHTML =
+            "0 pcs";
+
+        }
+
+    }
+
+
     update();
 
 }
@@ -76,7 +96,7 @@ function update(){
 
 
     document.getElementById("total").innerHTML =
-    total.toLocaleString();
+total.toLocaleString("id-ID");
 
 }
 
