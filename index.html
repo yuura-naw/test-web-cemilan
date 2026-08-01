@@ -1,7 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 
 <head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Cemilan Enak</title>
 
@@ -9,9 +13,7 @@
 
 </head>
 
-
 <body>
-
 
 <header>
 
@@ -23,68 +25,31 @@
 
 
 
-<section class="produk">
+<main class="container">
 
-
-<div class="card">
-
-<img src="img/cilok.jpg">
-
-<h3>Cilok Pedas</h3>
-
-<p>Rp5.000</p>
-
-
-<div class="counter">
-
-<button onclick="kurang('Cilok Pedas',5000)">
--
-</button>
-
-
-<span id="Cilok Pedas">
-0 pcs
-</span>
-
-
-<button onclick="tambah('Cilok Pedas',5000)">
-+
-</button>
-
-
-</div>
-
-</div>
-
-
-
-
+<!-- CILOK -->
 
 <div class="card">
 
-<img src="img/tiramisu.jpg">
+<img src="img/cilok.jpg" alt="Cilok">
 
-<h3>Keripik Pisang Tiramisu</h3>
+<h2>Cilok Pedas</h2>
 
-<p>Rp5.000</p>
+<div class="rating">
 
+⭐⭐⭐⭐⭐ <span>Terjual 150+</span>
+
+</div>
+
+<h3>Rp5.000</h3>
 
 <div class="counter">
 
-<button onclick="kurang('Keripik Pisang Tiramisu',5000)">
--
-</button>
+<button onclick="kurang('Cilok Pedas',5000)">−</button>
 
+<span id="Cilok Pedas">0 pcs</span>
 
-<span id="Keripik Pisang Tiramisu">
-0 pcs
-</span>
-
-
-<button onclick="tambah('Keripik Pisang Tiramisu',5000)">
-+
-</button>
-
+<button onclick="tambah('Cilok Pedas',5000)">+</button>
 
 </div>
 
@@ -93,32 +58,30 @@
 
 
 
+
+<!-- TIRAMISU -->
 
 <div class="card">
 
-<img src="img/coklat.jpg">
+<img src="img/tiramisu.jpg" alt="Tiramisu">
 
-<h3>Keripik Pisang Coklat</h3>
+<h2>Keripik Pisang Tiramisu</h2>
 
-<p>Rp5.000</p>
+<div class="rating">
 
+⭐⭐⭐⭐⭐ <span>Terjual 90+</span>
+
+</div>
+
+<h3>Rp5.000</h3>
 
 <div class="counter">
 
-<button onclick="kurang('Keripik Pisang Coklat',5000)">
--
-</button>
+<button onclick="kurang('Keripik Pisang Tiramisu',5000)">−</button>
 
+<span id="Keripik Pisang Tiramisu">0 pcs</span>
 
-<span id="Keripik Pisang Coklat">
-0 pcs
-</span>
-
-
-<button onclick="tambah('Keripik Pisang Coklat',5000)">
-+
-</button>
-
+<button onclick="tambah('Keripik Pisang Tiramisu',5000)">+</button>
 
 </div>
 
@@ -128,32 +91,29 @@
 
 
 
+<!-- COKLAT -->
 
 <div class="card">
 
-<img src="img/matcha.jpg">
+<img src="img/coklat.jpg" alt="Coklat">
 
-<h3>Keripik Pisang Matcha</h3>
+<h2>Keripik Pisang Coklat</h2>
 
-<p>Rp5.000</p>
+<div class="rating">
 
+⭐⭐⭐⭐⭐ <span>Terjual 120+</span>
+
+</div>
+
+<h3>Rp5.000</h3>
 
 <div class="counter">
 
-<button onclick="kurang('Keripik Pisang Matcha',5000)">
--
-</button>
+<button onclick="kurang('Keripik Pisang Coklat',5000)">−</button>
 
+<span id="Keripik Pisang Coklat">0 pcs</span>
 
-<span id="Keripik Pisang Matcha">
-0 pcs
-</span>
-
-
-<button onclick="tambah('Keripik Pisang Matcha',5000)">
-+
-</button>
-
+<button onclick="tambah('Keripik Pisang Coklat',5000)">+</button>
 
 </div>
 
@@ -161,47 +121,69 @@
 
 
 
-</section>
+
+
+<!-- MATCHA -->
+
+<div class="card">
+
+<img src="img/matcha.jpg" alt="Matcha">
+
+<h2>Keripik Pisang Matcha</h2>
+
+<div class="rating">
+
+⭐⭐⭐⭐⭐ <span>Terjual 70+</span>
+
+</div>
+
+<h3>Rp5.000</h3>
+
+<div class="counter">
+
+<button onclick="kurang('Keripik Pisang Matcha',5000)">−</button>
+
+<span id="Keripik Pisang Matcha">0 pcs</span>
+
+<button onclick="tambah('Keripik Pisang Matcha',5000)">+</button>
+
+</div>
+
+</div>
+
+</main>
+
+
 
 
 
 <div class="checkout">
 
+<input
 
-<div>
+type="text"
 
-🛒
+id="namaPembeli"
 
-<b>
-Rp<span id="total">0</span>
-</b>
-
-<div class="checkout">
+placeholder="👤 Masukkan nama pembeli">
 
 
-<input 
-type="text" 
-id="namaPembeli" 
-placeholder="Masukkan nama kamu">
 
+<div class="total-box">
 
-<div>
+<div>Total Harga</div>
 
-🛒
-
-<b>
-Rp<span id="total">0</span>
-</b>
+<b>Rp<span id="total">0</span></b>
 
 </div>
+
 
 
 <button onclick="checkout()">
 
-Checkout WhatsApp
+🛒 Checkout WhatsApp
 
 </button>
-
 
 </div>
 
@@ -209,7 +191,6 @@ Checkout WhatsApp
 
 <script src="script.js"></script>
 
-
 </body>
 
-</html>
+                 </html>
