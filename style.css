@@ -290,3 +290,70 @@ header p{
     font-weight:bold;
 
     }
+
+/* ===========================
+   TABLET
+=========================== */
+
+@media (min-width:768px){
+
+.container{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:30px;
+
+}
+
+.card{
+
+    margin-bottom:0;
+
+}
+
+}
+
+
+/* ===========================
+   DESKTOP
+=========================== */
+
+@media (min-width:1024px){
+
+.container{
+
+    width:1100px;
+
+    margin:auto;
+
+    grid-template-columns:repeat(3,1fr);
+
+}
+
+header h1{
+
+    font-size:60px;
+
+}
+
+header p{
+
+    font-size:26px;
+
+}
+
+.checkout{
+
+    width:500px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    border-radius:30px;
+
+}
+
+    }
