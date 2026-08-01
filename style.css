@@ -2,15 +2,14 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, sans-serif;
+    font-family:Arial,sans-serif;
 }
-
 
 body{
 
-    background:#fff5e6;
+    background:#fff6ef;
 
-    padding-bottom:200px;
+    color:#333;
 
 }
 
@@ -20,69 +19,81 @@ body{
 
 header{
 
-    background:#ff8c42;
+    background:linear-gradient(135deg,#ff8a3d,#ffb347);
 
     color:white;
 
     text-align:center;
 
-    padding:70px 25px;
+    padding:60px 20px;
 
-    border-radius:0 0 30px 30px;
+    border-radius:0 0 35px 35px;
 
 }
+
 
 
 header h1{
 
-    font-size:52px;
+    font-size:42px;
 
     font-weight:800;
 
-    margin-bottom:15px;
-
 }
+
+
 
 header p{
 
-    font-size:24px;
-    margin-top:10px;
+    font-size:20px;
+
+    margin-top:12px;
 
 }
 
 
 
-/* PRODUK */
+/* CONTAINER */
 
-.produk{
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:20px;
+.container{
 
     padding:20px;
 
+    padding-bottom:260px;
+
 }
 
 
+
+/* CARD */
 
 .card{
 
     background:white;
 
-    border-radius:25px;
+    border-radius:28px;
 
-    padding:25px;
+    margin-bottom:30px;
 
-    text-align:center;
+    overflow:hidden;
 
-    box-shadow:0 8px 20px rgba(0,0,0,0.15);
+    box-shadow:0 8px 20px rgba(0,0,0,.12);
+
+    transition:.25s;
 
 }
 
 
+
+.card:active{
+
+    transform:scale(.98);
+
+}
+
+
+
+/* FOTO */
 
 .card img{
 
@@ -92,7 +103,35 @@ header p{
 
     object-fit:cover;
 
-    border-radius:25px;
+}
+
+
+
+/* ISI */
+
+.card h2{
+
+    font-size:32px;
+
+    padding:20px 20px 0;
+
+}
+
+
+
+.rating{
+
+    padding:10px 20px;
+
+    font-size:18px;
+
+}
+
+
+
+.rating span{
+
+    color:#777;
 
 }
 
@@ -100,33 +139,17 @@ header p{
 
 .card h3{
 
-    font-size:35px;
-
-    font-weight:bold;
-
-    margin-top:20px;
-
-    font-weight:700;
-
-}
-
-
-
-.card p{
-
-    color:#ff6b35;
+    color:#ff7b00;
 
     font-size:30px;
 
-    font-weight:bold;
-
-    margin:20px;
+    padding:0 20px;
 
 }
 
 
 
-/* TOMBOL JUMLAH */
+/* COUNTER */
 
 .counter{
 
@@ -136,7 +159,9 @@ header p{
 
     align-items:center;
 
-    gap:8px;
+    gap:25px;
+
+    padding:25px;
 
 }
 
@@ -144,19 +169,21 @@ header p{
 
 .counter button{
 
-    width:75px;
+    width:70px;
 
-    height:75px;
-
-    border-radius:50%;
+    height:70px;
 
     border:none;
 
-    background:#ff8c42;
+    border-radius:50%;
+
+    background:#ff8a3d;
 
     color:white;
 
-    font-size:42px;
+    font-size:40px;
+
+    font-weight:bold;
 
 }
 
@@ -164,17 +191,19 @@ header p{
 
 .counter span{
 
-    font-size:32px;
+    font-size:28px;
 
     font-weight:bold;
 
-    min-width:120px;
+    min-width:110px;
+
+    text-align:center;
 
 }
 
 
 
-/* CHECKOUT BAWAH */
+/* CHECKOUT */
 
 .checkout{
 
@@ -188,27 +217,55 @@ header p{
 
     background:white;
 
-    padding:30px;
+    padding:25px;
 
-    display:flex;
+    box-shadow:0 -8px 20px rgba(0,0,0,.18);
 
-    flex-direction:column;
-
-    align-items:center;
-
-    gap:15px;
-
-    box-shadow:0 -5px 20px rgba(0,0,0,0.2);
-
-    z-index:100;
+    border-radius:25px 25px 0 0;
 
 }
 
 
 
-.checkout b{
+#namaPembeli{
 
-    font-size:42px;
+    width:100%;
+
+    padding:22px;
+
+    font-size:24px;
+
+    border-radius:18px;
+
+    border:2px solid #ddd;
+
+    margin-bottom:20px;
+
+}
+
+
+
+.total-box{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:20px;
+
+    font-size:24px;
+
+}
+
+
+
+.total-box b{
+
+    font-size:34px;
+
+    color:#ff7b00;
 
 }
 
@@ -218,68 +275,18 @@ header p{
 
     width:100%;
 
+    border:none;
+
+    padding:24px;
+
+    border-radius:20px;
+
     background:#25D366;
 
     color:white;
 
-    border:none;
-
-    padding:28px;
-
-    border-radius:30px;
-
-    font-size:30px;
+    font-size:28px;
 
     font-weight:bold;
 
-}
-
-
-
-/* ANIMASI */
-
-@keyframes muncul{
-
-    from{
-
-        opacity:0;
-
-        transform:translateY(20px);
-
     }
-
-
-    to{
-
-        opacity:1;
-
-        transform:translateY(0);
-
-    }
-
-}
-
-
-
-/* EFEK TEKAN */
-
-.card:active{
-
-    transform:scale(0.97);
-
-  }
-
-#namaPembeli{
-
-    width:95%;
-
-    padding:25px;
-
-    border-radius:20px;
-
-    border:2px solid #ddd;
-
-    font-size:28px;
-
-    }
-
