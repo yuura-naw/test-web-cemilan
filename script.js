@@ -115,7 +115,7 @@ Terima kasih 😊`;
 
     window.open(
 
-        "https://wa.me/6285135632632?text=" +
+        "https://wa.me/6281367811790?text=" +
         encodeURIComponent(pesan),
 
         "_blank"
