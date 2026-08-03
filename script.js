@@ -1,27 +1,28 @@
 let pesanan = {};
 
-function tambah(nama, harga) {
+function tambah(id, nama, harga) {
 
-    if (!pesanan[nama]) {
-        pesanan[nama] = {
+    if (!pesanan[id]) {
+        pesanan[id] = {
+            nama: nama,
             jumlah: 0,
             harga: harga
         };
     }
 
-    pesanan[nama].jumlah++;
+    pesanan[id].jumlah++;
 
     update();
 }
 
-function kurang(nama, harga) {
+function kurang(id, nama, harga) {
 
-    if (pesanan[nama]) {
+    if (pesanan[id]) {
 
-        pesanan[nama].jumlah--;
+        pesanan[id].jumlah--;
 
-        if (pesanan[nama].jumlah <= 0) {
-            delete pesanan[nama];
+        if (pesanan[id].jumlah <= 0) {
+            delete pesanan[id];
         }
 
     }
@@ -33,93 +34,75 @@ function update() {
 
     let total = 0;
 
-    const semuaProduk = [
-        "Pentol Pedas",
-        "Keripik Pisang Tiramisu",
-        "Keripik Pisang Coklat",
-        "Keripik Pisang Matcha"
-    ];
+    const semuaProduk = ["pentol", "tiramisu", "coklat", "matcha"];
 
-    semuaProduk.forEach(function(nama){
+    semuaProduk.forEach(function(id) {
 
         let jumlah = 0;
 
-        if(pesanan[nama]){
-            jumlah = pesanan[nama].jumlah;
-            total += pesanan[nama].jumlah * pesanan[nama].harga;
+        if (pesanan[id]) {
+            jumlah = pesanan[id].jumlah;
+            total += pesanan[id].jumlah * pesanan[id].harga;
         }
 
-        document.getElementById(nama).innerHTML =
-        jumlah + " pcs";
+        document.getElementById(id).innerHTML = jumlah + " pcs";
 
     });
 
     document.getElementById("total").innerHTML =
-    total.toLocaleString("id-ID");
+        "Rp " + total.toLocaleString("id-ID");
 
 }
 
-function checkout(){
+function checkout() {
 
-    const nama =
-    document.getElementById("namaPembeli").value.trim();
+    const namaPembeli =
+        document.getElementById("namaPembeli").value.trim();
 
-    if(nama==""){
-
+    if (namaPembeli === "") {
         alert("Silakan isi nama pembeli.");
-
         return;
-
     }
 
-    if(Object.keys(pesanan).length===0){
-
+    if (Object.keys(pesanan).length === 0) {
         alert("Keranjang masih kosong.");
-
         return;
-
     }
 
-    let total=0;
+    let total = 0;
 
     let pesan =
-`Halo, saya ingin memesan:
+`Halo, saya ingin memesan.
 
-👤 Nama : ${nama}
+👤 Nama : ${namaPembeli}
 
 Pesanan:
 `;
 
-    for(let item in pesanan){
+    for (let id in pesanan) {
 
-        let subtotal =
-        pesanan[item].jumlah *
-        pesanan[item].harga;
+        let item = pesanan[id];
+
+        let subtotal = item.jumlah * item.harga;
 
         total += subtotal;
 
-        pesan +=
-`• ${item}
-  ${pesanan[item].jumlah} pcs
-  Rp${subtotal.toLocaleString("id-ID")}
+        pesan += `• ${item.nama}
+- ${item.jumlah} pcs
+- Rp${subtotal.toLocaleString("id-ID")}
 
 `;
 
     }
 
-    pesan +=
-`====================
+    pesan += `====================
 Total : Rp${total.toLocaleString("id-ID")}
 
 Terima kasih 😊`;
 
     window.open(
-
-        "https://wa.me/6281367811790?text=" +
-        encodeURIComponent(pesan),
-
+        "https://wa.me/6281367811790?text=" + encodeURIComponent(pesan),
         "_blank"
-
     );
 
-    }
+}
