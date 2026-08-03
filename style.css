@@ -217,9 +217,9 @@ header p{
 
     background:white;
 
-    padding:25px;
+    padding:15px 18px;
 
-    box-shadow:0 -8px 20px rgba(0,0,0,.18);
+    box-shadow:0 -5px 15px rgba(0,0,0,.15);
 
     border-radius:25px 25px 0 0;
 
@@ -231,9 +231,9 @@ header p{
 
     width:100%;
 
-    padding:22px;
+    padding:14px;
 
-    font-size:24px;
+    font-size:17px;
 
     border-radius:18px;
 
