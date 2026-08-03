@@ -34,7 +34,7 @@ function update() {
     let total = 0;
 
     const semuaProduk = [
-        "Cilok Pedas",
+        "Pentol Pedas",
         "Keripik Pisang Tiramisu",
         "Keripik Pisang Coklat",
         "Keripik Pisang Matcha"
