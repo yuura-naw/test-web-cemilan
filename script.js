@@ -34,7 +34,7 @@ function update() {
 
     let total = 0;
 
-    const semuaProduk = ["pentol", "tiramisu", "coklat", "matcha"];
+    const semuaProduk = ["wonton", "tiramisu", "coklat", "matcha"];
 
     semuaProduk.forEach(function(id) {
 
