@@ -50,7 +50,7 @@ function update() {
     });
 
     document.getElementById("total").innerHTML =
-        "Rp " + total.toLocaleString("id-ID");
+    total.toLocaleString("id-ID");
 
 }
 
